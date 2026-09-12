@@ -1,7 +1,7 @@
 import express from "express";
 import client from "prom-client";
 let register=new client.Registry();
-client.collectDefaultMetrics(register=client.register);
+client.collectDefaultMetrics({register});
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.get('/metrics',async (req,res)=>{
     const metrics=await register.metrics()
-    res.setHeader("contentType",register.contentType)
+    res.setHeader("Content-Type", register.contentType);
     
     res.send(metrics);
 })
