@@ -2,6 +2,9 @@ import express from "express";
 const app=express();
 const PORT = 5001;
 
+ console.log("STEP 1: /products route reached");
+
+
 const products =[
         {
             id: 1,
@@ -10,7 +13,7 @@ const products =[
         },
         {
             id:2,
-            name:"Hoodies",
+            name:"Hoodies",     
             price : 999
         }
     ]

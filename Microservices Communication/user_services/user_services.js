@@ -9,8 +9,10 @@ app.get('/user',(req,res)=>{
 })
 
 app.get('/products',async (req,res)=>{
+    console.log("Inside /product route")
     try{
-        const response=await fetch("http://product_container:5001/products/");
+        const response=await fetch("http://backend:5001/products");
+        console.log("STEP 2: fetch completed");
         const products = await response.json()
         res.json({
             user:"Puneet",
@@ -19,6 +21,7 @@ app.get('/products',async (req,res)=>{
 
 
     }catch(error){
+        console.log("ERROR:", error);
         res.status(500).json({
             message : "Could not communicate with the product services"
         })

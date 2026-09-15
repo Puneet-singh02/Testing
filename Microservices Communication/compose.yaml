@@ -1,0 +1,30 @@
+services:
+  frontend:
+      build: ./user_services
+      networks:
+        - microservices
+      ports:
+        - "5006:5000"
+      volumes:
+        - frontend_data:/developer/user_services
+      
+      
+
+  product_container:
+    build: ./product_services
+    networks:
+      - microservices
+
+  Database:
+    image: mongo
+    networks:
+      - microservices
+
+networks:
+    microservices:
+      driver: bridge
+
+volumes:
+    frontend_data:
+    backend_data:
+    database_data:
